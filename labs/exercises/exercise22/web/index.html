@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN">
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+        <script type="text/javascript" src="js/mylib.js"></script>
+        <script type="text/javascript">
+            bind(window, 'load', function() {   
+                bind(id('req'), 'click', function() {
+                    var request = xhr();
+                    // 完成非同步請求取得表格並顯示
+					
+					
+                });
+            });
+            
+        </script>        
+    </head>
+    <body>
+        <button id='req'>取得表格</button>
+        <div id="table"></div>
+    </body>
+</html>

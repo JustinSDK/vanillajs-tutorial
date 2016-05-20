@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN">
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+		<script type="text/javascript" src="js/mylib.js"></script>
+        <script type="text/javascript">
+		    bind(window, 'load', function(event) {
+                
+                var image = id('image');
+				
+				bind(id('fadeIn'), 'click', function() {
+                   fadeIn(image, 100000);
+                });
+                
+				bind(id('fadeOut'), 'click', function() {
+                   fadeOut(image, 100000);
+                });
+				
+            });
+        </script>        
+    </head>
+    <body>
+        <button id='fadeOut'>淡出</button>
+        <button id='fadeIn'>淡入</button><br>
+        <img id="image" src="images/caterpillar_small.jpg">
+    </body>
+</html>

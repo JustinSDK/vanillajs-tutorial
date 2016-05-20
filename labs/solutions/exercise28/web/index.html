@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN">
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <script type="text/javascript" src="js/json2.js"></script>
+        <script type="text/javascript" src="js/mylib.js"></script>
+        <script type="text/javascript">
+            function removeSuggestion() {
+                // 移除選項的<div>容器
+                var divs = name('div');
+                for (var i = 0; i < divs.length; i++) {
+                    document.body.removeChild(divs[i]);
+                }
+            }
+
+            function suggestionHTML(keywords) {
+                var innerHTML = '';
+                for (var i = 0; i < keywords.length; i++) {
+                    innerHTML += (keywords[i] + '<br>');
+                }
+                return innerHTML;
+            }
+
+            function stickToInput(div) {
+                // 設定<div>的位置
+                var xy = offset(search);
+                div.style.left = xy.x + 'px';
+                div.style.top = xy.y + search.offsetHeight + 'px';
+                div.style.width = search.offsetWidth + 'px';
+            }
+
+            bind(window, 'load', function () {
+                var search = id('search');
+                bind(search, 'keyup', function () {
+                    removeSuggestion();
+
+                    // 沒有輸入值，直接結束
+                    if (search.value === '') {
+                        return;
+                    }
+
+                    // 發出非同步請求，取得可能的選項，以JSON的字串陣列格式傳回
+                    get('JSON-1.jsp?' + param({keyword: search.value}), function (request) {
+                        // 剖析JSON
+                        var keywords = JSON.parse(request.responseText);
+                        // 字串陣列長度不為0時加以處理
+                        if (keywords.length !== 0) {
+                            // 建立容納選項的<div>
+                            var div = document.createElement('div');
+                            div.innerHTML = suggestionHTML(keywords);
+                            stickToInput(div);
+                            // 附加至DOM樹
+                            document.body.appendChild(div);
+                        }
+                    });
+                });
+            });
+        </script>        
+    </head>
+    <body>
+        <hr>
+        搜尋：<input id="search" type="text">
+
+    </body>
+</html>

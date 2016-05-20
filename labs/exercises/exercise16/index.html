@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN">
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+        <script type="text/javascript">
+		    function createOption(value, text) {
+			    var option = document.createElement('option');
+				option.value = value;
+				option.text = text;
+				return option;
+			}
+		
+            window.onload = function() {
+                var shelve = {
+				    'theory'   : ['常見演算', '電腦圖學', '設計模式'],
+					'language' : ['C 語言', 'C++', 'Java', 'Python', 'JavaScript'],
+					'web'      : ['Servlet', 'JSP', 'Struts', 'Spring MVC']
+				};
+					   
+                // 使用 select 的 change 事件實作聯動選單
+				
+            };
+        </script>        
+    </head>
+    <body>
+        圖書：<br>
+        <select id="category">
+            <option>-- 選擇分類 --</option>
+            <option value="theory">理論基礎</option>
+            <option value="language">程式語言</option>
+            <option value="web">網頁技術</option>
+        </select><br><br>
+        採購：<div id="book"></div>
+    </body>
+</html>

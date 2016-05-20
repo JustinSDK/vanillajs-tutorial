@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN">
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+        <script type="text/javascript" src="js/mylib.js"></script>
+        <script type="text/javascript">
+            function createOption(value, text) {
+                var option = document.createElement('option');
+                option.value = value;
+                option.text = text;
+                return option;
+            }
+            
+            bind(window, 'load', function () {
+                bind(id('category'), 'change', function () {
+                    var p = param({
+                        'category': this.value,
+                        'time': new Date().getTime()
+                    });
+
+                    get('GET-1.jsp?' + p, function (xhr) {
+                        var bookDiv = document.getElementById('book');
+
+                        if (bookDiv.firstChild !== null) {
+                            bookDiv.removeChild(bookDiv.firstChild);
+                        }
+
+                       var select = document.createElement('select');
+
+                        var xml = xhr.responseXML;
+                        var options = xml.getElementsByTagName('option');
+                        for (var i = 0; i < options.length; i++) {
+                            var value = options[i].getAttribute('value');
+                            var text = options[i].firstChild.nodeValue;
+                            select.appendChild(createOption(value, text));
+                        }
+
+                        bookDiv.appendChild(select);
+                    });
+
+                });
+            });
+        </script>        
+    </head>
+    <body>
+        圖書：<br>
+        <select id="category">
+            <option>-- 選擇分類 --</option>
+            <option value="theory">理論基礎</option>
+            <option value="language">程式語言</option>
+            <option value="web">網頁技術</option>
+        </select><br><br>
+        採購：<div id="book"></div>
+    </body>
+</html>

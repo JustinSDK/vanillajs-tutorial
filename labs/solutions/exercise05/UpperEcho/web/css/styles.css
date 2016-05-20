@@ -1,0 +1,13 @@
+.highlight {
+  color: red;
+  font-size: 250%;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.highlight2 {
+  color: green;
+  font-size: 150%;
+  font-style: italic;
+  font-weight: bold;
+}

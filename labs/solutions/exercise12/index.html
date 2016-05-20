@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>My title</title>
+		<script type="text/javascript">
+		    window.onload = function() {
+				title();
+				h1();
+				a();
+			};
+			
+			function title() {
+			    alert(document.getElementsByTagName('title')[0].firstChild.nodeValue);
+			}
+			
+			function h1() {
+			    alert(document.getElementsByTagName('h1')[0].firstChild.nodeValue);
+			}
+			
+			function a() {
+			    alert(document.getElementsByTagName('a')[0].firstChild.data);
+			}
+		</script>
+    </head>
+    <body>
+        <h1>My header</h1>
+        <a href="Gossip/index.html">My link</a>
+    </body>
+</html>

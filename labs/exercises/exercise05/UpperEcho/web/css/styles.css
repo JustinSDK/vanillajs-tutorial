@@ -1,0 +1,8 @@
+.highlight {
+  color: red;
+  font-size: 250%;
+  font-style: italic;
+  font-weight: bold;
+}
+
+// 加入 .highlight2 的定義

@@ -1,0 +1,8 @@
+div {
+    color: #ffffff;
+    background-color: #ff0000;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    position: absolute;
+}   

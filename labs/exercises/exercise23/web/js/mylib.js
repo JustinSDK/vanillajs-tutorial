@@ -145,7 +145,7 @@ function addClass(element, clz) {
 }
 function removeClass(element, clz) {
 	element.className = element.className.replace(
-		new RegExp('\\b' + clz + '\\b\\s*', 'g'), '');
+		new RegExp('(?:^|\s)' + clz + '(?!\S)', 'g'), '');
 }
 function toggleClass(element, clz1, clz2) {
 	if(hasClass(element, clz1)) {

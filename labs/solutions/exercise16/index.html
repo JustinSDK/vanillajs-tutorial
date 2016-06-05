@@ -27,7 +27,7 @@
 					var select = document.createElement('select');
 					var books = shelve[this.value];
 					books.forEach(function(name) {
-					    select.appendChild(createOption(this.value, name));
+					    select.appendChild(createOption(name, name));
 					});
 					
 					bookDiv.appendChild(select);
